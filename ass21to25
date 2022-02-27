@@ -1,0 +1,557 @@
+private static int HEADS = 1;
+
+   // current value of the coin
+   private int value = 0;
+
+   // method to randomly set the value of the coin to heads or tails
+   public void flip()
+   {
+      if (Math.random() < 0.5)
+      {
+          value = 0;
+      }
+      else
+      {
+         value = 1;
+      }
+   }
+
+   // return true if the value is heads or false otherwise
+   public boolean isHeads()
+   {
+      return value == HEADS;
+   }
+// return true if the value is not heads or false otherwise
+   public boolean isTail()
+   {
+      return value != HEADS;
+   }
+   // convert the value to a string
+   public String toString()
+   {
+      if (value == HEADS) return "Heads";
+      else return "Tails";
+   }
+
+   // test the class
+   public static void main(String[] args)
+   {
+
+      Coin myCoin = new Coin();
+      for (int i = 0; i < 10; i++)
+      {
+         myCoin.flip();
+         System.out.println(myCoin);
+         System.out.println(myCoin.isHeads());
+         System.out.println(myCoin.isTail());
+      }
+   }
+}
+
+2. Modify the code below to add more constructors. Also modify the main method to test the new constructors.
+
+public class Person
+{
+   // fields
+   private String name;
+   private String email;
+   private String phoneNumber;
+   private String adharNumber;
+
+   // constructor
+   public Person(String theName, String adharno)
+   {
+      this.name = theName;
+      this.adharNumber=adharno;
+   }
+   
+
+   // methods - getters
+   public String getName() { return this.name;}
+   
+   public String getEmail() { return this.email;}
+   public String getPhoneNumber() { return this.phoneNumber;}
+   
+
+   // methods - setters
+   public void setName(String theName) { this.name = theName;}
+   public void setEmail(String theEmail) {this.email = theEmail;}
+   public void setPhoneNumber(String thePhoneNumber) { this.phoneNumber = thePhoneNumber;}
+   public String toString()
+   {
+      return this.name + " " + this.email + " " + this.phoneNumber + " " + this.adharNumber;
+   }
+
+   // main method for testing
+   public static void main(String[] args)
+   {
+      Person p1 = new Person("Sana","410056602380");
+      System.out.println(p1);
+      Person p2 = new Person("Jean","465461318963");
+      p2.setEmail("jean@gmail.com");
+      p2.setPhoneNumber("404 899-9955");
+      System.out.println(p2);
+     
+   }
+}
+
+3. package pack1;
+ 
+class A
+{
+    public A()
+    {
+        //public constructor
+    }
+}
+ 
+package pack2;
+ 
+import pack1.*;
+ 
+class B extends A
+{
+    A a = new A();   	//Compile Time Error
+}
+
+
+Check if compile time error exists. If yes, correct the code to remove the error.
+
+***************************************************************************************************************************
+22-02-2022
+***************************************************************************************************************************
+1. Edit this code so the class Beagle is a subclass of the Dog class. When you run the code it should print “woof!” and then “arf arf”
+
+public class Dog
+{
+    public void speak()
+    {
+        System.out.println("woof!");
+    }
+
+    public static void main(String[] args)
+    {
+        Dog d = new Dog();
+        d.speak();
+        Beagle b = new Beagle();
+        b.speak();
+    }
+}
+
+class Beagle
+{
+    public void speak()
+    {
+        System.out.println("arf arf");
+    }
+}
+Q 2.Add an equals method to this class that returns true if the current Dog and passed Dog have the same name. The code should print false twice then true twice.
+
+public class Dog
+{
+    private String name;
+
+    public Dog(String name)
+    {
+        this.name = name;
+    }
+
+    public boolean equals(Dog other)
+    {
+       return name.equals(other.name);
+    }
+
+    public static void main(String[] args)
+    {
+        Dog d1 = new Dog("Rufus");
+        Dog d2 = new Dog("Sally");
+        Dog d3 = new Dog("Rufus");
+        Dog d4 = d3;
+        System.out.println(d1.equals(d2));
+        System.out.println(d2.equals(d3));
+        System.out.println(d1.equals(d3));
+        System.out.println(d3.equals(d4));
+    }
+}
+
+Q 3.You have to create another class that extends the abstract class. Then you can create an instance of the new class.
+Notice that setTitle method is abstract too and has no body. That means you must implement the body of that method in the child class.
+In the editor, we have provided the abstract Book class and a Main class. In the Main class, we created an instance of a class called MyBook. 
+Your task is to write just the MyBook class.
+Your class mustn't be public.
+Sample Input
+A tale of two cities
+
+Sample Output
+The title is: A tale of two cities
+
+abstract class Book{
+    String title;
+    abstract void setTitle(String s);
+    String getTitle(){
+        return title;
+    }
+}
+class Main extends Book{
+    public void setTitle(String s){
+        title=s;
+    }
+    public static void main(String args[]){
+       Main mybook=new Main();
+       mybook.setTitle("A tale of two cities");
+       System.out.println(mybook.getTitle());
+    }
+}
+***************************************************************************************************************************
+23-02-2022
+***************************************************************************************************************************
+
+"- create class Animal with various variables and methods in it to demonstrate 
+- create multiples objects like dog, cat, cow, elephant etc and demomnstrate various approches to assign values to variables
+
+class Main {
+    int roll;
+    String name;
+    float salary;
+    
+    public void setValues(int roll, String name, float salary){
+        this.roll=roll;
+        this.name=name;
+        this.salary=salary;
+        
+    }
+    public void disp(){
+        System.out.println(roll+" "+name+" "+salary);
+    }
+    
+    
+    public static void main(String args[]){
+        Main a=new Main();
+        a.setValues(10,"shree",10.34f);
+        a.disp();
+        Main b=new Main();
+        b.setValues(20,"ram",10.3548f);
+        b.disp();
+       
+    }
+}
+- auto generate getters and setters
+- demonstrate constructor chanining and create objects by passing no values, lesser value and more values
+-create static variable age and create a static method inside class named incrementAge() and inside increment the age whenever this method called 
+(please keep break pointer and check what happens and value inside this method when you call from different objects
+ 
+class Main {
+    static int age=23;
+    
+    public void incrementAge(){
+        System.out.println(age);
+        age++;
+    }
+    public static void main(String args[]){
+        Main a=new Main();
+        a.incrementAge();
+        Main b=new Main();
+        b.incrementAge();
+        
+       
+    }
+}
+***************************************************************************************************************************
+24-02-2022
+***************************************************************************************************************************
+Overriding
+1. Override the taste method from the Candy class in the Chocolate class to return “tastes chocolately”. It should print “tastes sweet!” and then “tastes chocolately”.
+
+class Candy
+{
+    public String taste()
+    {
+        return "tastes sweet!";
+    }
+ 
+    
+}
+ 
+class Chocalate extends Candy
+{
+    public  String taste(){
+        return "tastes chocolately";
+    }
+    public static void main(String[] args)
+    {
+        Candy c2 = new Candy();
+        System.out.println(c2.taste());
+        Candy c1 = new Chocalate();
+        System.out.println(c1.taste());
+        
+    }
+  
+}
+2. When a subclass inherits from a superclass, it also inherits its methods; however, it can also override the superclass methods
+ (as well as declare and implement new ones). Consider the following Sports class:
+
+class Sports{
+    String getName(){
+        return "Generic Sports";
+    }
+    void getNumberOfTeamMembers(){
+        System.out.println( "Each team has n players in " + getName() );
+    }
+}
+class Soccer extends Sports{
+    @Override
+    String getName(){
+        return "Soccer Class";
+    }
+}
+class Main{
+    public static void main(String args[]){
+        Sports s=new Sports();
+        s.getNumberOfTeamMembers();
+        Sports s1=new Soccer();
+        System.out.println(s1.getName());
+    }
+}
+
+Q. 3 Overloading:
+Write a method that overloads the talk method by taking in a name and printing “Hello” with that name.
+public class Test
+{
+    public static void talk()
+    {
+          System.out.println("hello there!");
+    }
+
+    public static void talk(String str){
+        System.out.println(str);
+    }
+
+    public static void main(String[] args)
+    {
+        talk();
+        talk("Hello");
+    }
+}
+***************************************************************************************************************************
+25-02-2022
+***************************************************************************************************************************
+
+Q1 - What is the output of the following application?
+class Automobile {
+    private String drive() {
+        return "Driving vehicle";
+    }
+}
+
+class Car extends Automobile {
+    protected String drive() {
+        return "Driving car";
+    }
+}
+
+public class ElectricCar extends Car {
+
+    @Override
+    public final String drive() {
+        return "Driving electric car";
+    }
+
+    public static void main(String[] wheels) {
+        final Car car = new ElectricCar();
+        System.out.print(car.drive());
+    }
+}
+A. Driving vehicle
+B. Driving electric car
+C. Driving car
+D. The code does not compile
+
+ANS:- B. Driving electric car
+ 
+Q2 - Look at the following code and choose the right option for the word :
+// Shape.java
+public class Shape {
+    protected void display() {
+        System.out.println("Display-base");
+    }
+}
+// Circle.java
+public class Circle extends Shape { <
+    < access - modifier > void display() {
+        System.out.println("Display-derived");
+    }
+}
+a. Only protected can be used.
+B. public and protected both can be used.
+C. public, protected, and private can be used.
+d. Only public can be used.
+ 
+ ANS: B. public and protected both can be used.
+ 
+Q3 - What will be the output of the following program?
+class Base {
+    public Base() {
+        System.out.println("Base");
+    }
+}
+
+class Derived extends Base {
+    public Derived() {
+        System.out.println("Derived");
+    }
+}
+
+class DeriDerived extends Derived {
+    public DeriDerived() {
+        System.out.println("DeriDerived");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Derived b = new DeriDerived();
+    }
+}
+a)
+Base
+Derived
+DeriDerived
+
+b)
+Derived
+DeriDerived
+
+c)
+DeriDerived
+Derived
+Base
+
+d)
+DeriDerived
+Derived
+
+ANS: 
+c)
+DeriDerived
+Derived
+Base
+
+Q4 - Consider the following program:
+class Base {
+    public Base() {
+        System.out.print("Base ");
+    }
+
+    public Base(String s) {
+        System.out.print("Base: " + s);
+    }
+}
+
+class Derived extends Base {
+    public Derived(String s) {
+        super(); // Stmt-1
+        super(s); // Stmt-2
+        System.out.print("Derived ");
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Base base = new Derived("Hello ");
+    }
+}
+Select three correct options from the following list:
+a) Removing Stmt-1 will make the program compilable and it will print the following: Base Derived.
+b) Removing Stmt-1 will make the program compilable and it will print the following: Base: Hello Derived.
+c) Removing Stmt-2 will make the program compilable and it will print the following: Base Derived.
+d) Removing both Stmt-1 and Stmt-2 will make the program compilable and it will print the following: Base Derived.
+e) Removing both Stmt-1 and Stmt-2 will make the program compilable and it will print the following: Base: Hello Derived.
+
+ANS: c) Removing Stmt-2 will make the program compilable and it will print the following: Base Derived.
+
+Q5 - What is the output of the following application?
+abstract class Car {
+    static {
+        System.out.print("1");
+    }
+
+    public Car(String name) {
+        super();
+        System.out.print("2");
+    }
+
+    {
+        System.out.print("3");
+    }
+}
+
+public class BlueCar extends Car {
+    {
+        System.out.print("4");
+    }
+
+    public BlueCar() {
+        super("blue");
+        System.out.print("5");
+    }
+
+    public static void main(String[] gears) {
+        new BlueCar();
+    }
+}
+A. 23451
+B. 12354
+C. 13245
+D. The code does not compile.
+
+ANS: C. 13245
+
+Q6 - What is the output of the following application?
+class Math {
+    public final double secret = 2;
+}
+
+class ComplexMath extends Math {
+    public final double secret = 4;
+}
+
+public class InfiniteMath extends ComplexMath {
+    public final double secret = 8;
+
+    public static void main(String[] numbers) {
+        Math math = new InfiniteMath();
+        System.out.print(math.secret);
+    }
+}
+A. 2
+B. 4
+C. 8
+D. The code does not compile.
+
+ANS: A. 2
+
+Q7 - Consider the following program and predict the output:
+public class Test {
+    public void print(Integer i) {
+        System.out.println("Integer");
+    }
+
+    public void print(int i) {
+        System.out.println("int");
+    }
+
+    public void print(long i) {
+        System.out.println("long");
+    }
+
+    public static void main(String args[]) {
+        Test test = new Test();
+        test.print(10);
+    }
+}
+a) The program results in a compiler error (“ambiguous overload”).
+b) long
+c) Integer
+d) int
+
+ANS: d) int
